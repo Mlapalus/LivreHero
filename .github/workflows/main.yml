@@ -3,5 +3,5 @@ name: Main File for CI/CD
 on : [ push ]
 
 jobs:
-  call-backend-ci:
+  call-backend-ci-symfony:
     uses: ./backend/.github/workflows/ci.yml
