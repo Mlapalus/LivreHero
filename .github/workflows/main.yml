@@ -1,0 +1,7 @@
+name: Main File for CI/CD
+
+on : [ push ]
+
+jobs:
+  call-backend-ci:
+    uses: ./backend/.github/workflows/ci.yml
