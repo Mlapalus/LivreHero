@@ -1,8 +1,0 @@
-name: Main File for CI/CD
-
-on : [ push ]
-
-jobs:
-  call-backend-ci-symfony:
-    needs: Explore-GitHub-Actions
-    uses: ./backend/.github/workflows/ci.yml@main
