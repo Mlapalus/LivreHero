@@ -4,4 +4,5 @@ on : [ push ]
 
 jobs:
   call-backend-ci-symfony:
-    uses: backend/.github/workflows/ci.yml
+    needs: Explore-GitHub-Actions
+    uses: backend/.github/workflows/ci.yml@current-branch
