@@ -17,6 +17,7 @@ jobs:
     - name: Validate composer.json and composer.lock
       run: | 
           cd backend
+          composer update
           composer validate --strict
 
     - name: Cache Composer packages
