@@ -39,7 +39,7 @@ jobs:
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
       run: |
-        backend/vendor/bin/phpunit
+        backend/vendor/bin/phpunit backend/tests/
     - name: PHPStan Static Analysis
       uses: php-actions/phpstan@v2
       with:
