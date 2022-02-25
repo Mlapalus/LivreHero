@@ -40,4 +40,8 @@ jobs:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
       run: |
         backend/vendor/bin/phpunit
-
+    - name: PHPStan Static Analysis
+      uses: php-actions/phpstan@v2
+      with:
+        configuration: custom/path/to/phpstan.neon
+        memory_limit: 256M
