@@ -10,10 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Copy .env.test.local
-      run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
+      run: |
+          cd backend/livre-hero-back
+          php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
     - name: Validate composer.json and composer.lock
       run: | 
-          cd backend
+          cd backend/livre-hero-back
           composer update
           composer validate --strict
 
@@ -28,20 +30,21 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd backend
+        cd backend/livre-hero-back
         composer install --prefer-dist --no-progress
 
     - name: Create Database
       run: |
+        cd backend/livre-hero-back
         mkdir -p data
         touch data/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
       run: |
-        backend/vendor/bin/phpunit backend/tests/
+        backend/livre-hero-back/bin/phpunit backend/livre-hero-back/tests/
     - name: PHPStan Static Analysis
       uses: php-actions/phpstan@v2
       with:
-        configuration: backend/phpstan.neon
+        configuration: backend/livre-hero-back/phpstan.neon
         memory_limit: 256M
