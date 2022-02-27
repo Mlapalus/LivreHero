@@ -9,10 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Copy .env.test.local
-      run: |
-          cd backend/livre-hero-back
-          php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
     - name: Validate composer.json and composer.lock
       run: | 
           cd backend/livre-hero-back
